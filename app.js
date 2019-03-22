@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+// const shrinkRay = require('shrink-ray');
 const fs = require('fs')
 const app = express()
     .set('view engine', 'ejs')
     .set('views', 'view')
+    // .use(shrinkRay)
+    .use(setHeader)
     .use(express.static('./src/css'))
     .use(express.static('./src/images'))
     .use(bodyParser.json())
@@ -14,6 +17,22 @@ const app = express()
  
 const port = 3000
 
+function setHeader(req, res, next){
+    res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60); 
+    next();
+}
+
+// function shrinkRay(){
+//         cache: () => false,
+//         cacheSize: false,
+//         filter: () => true,
+//         brotli: {
+//             quality: 11 // Between 1 - 11
+//         },
+//         zlib: {
+//             level: 6 // Between 1 - 9
+//         }
+//     };
 
 function index(req, res) {
     fs.readFile('./src/results.json', function(error, data) {
