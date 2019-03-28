@@ -7,12 +7,7 @@
     "node": "10.3.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js",
-    "build:css": "node gulp/css.js",
-    "build:js": "node gulp/javascript.js",
-    "revision": "node gulp/revisioning.js",
-    "urevision": "node gulp/revision-hash.js"
+    "start": "node server"
   },
   "repository": {
     "type": "git",
