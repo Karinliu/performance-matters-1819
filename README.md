@@ -1,7 +1,7 @@
 ## Performance matters
-For performance matters I used the following things:
-• First view
-• Time to first byte
+For performance matters I used the following things: <br>
+• First view <br>
+• Time to first byte <br>
 
 ### First view
 First it takes 2,18 seconds to fully load in the CSS. In order to make it faster, I minified the CSS file by using gulp (see [here](https://github.com/Karinliu/performance-matters-1819/blob/master/gulp/css.js). The loading now takes 2.14 seconds.
@@ -19,7 +19,7 @@ In the first prototype it takes a long time to load the before you can interact 
 
 In my first prototype the loading time was 34,87 seconds and in the Node JS prototype the loading time was 4,39 seconds. See the screenshots below
 
-<img width="400" alt="Screenshot 2019-03-21 22 00 59" src="https://user-images.githubusercontent.com/32538678/54786832-30a57d00-4c2a-11e9-8020-e1edc2b8c59d.png"> <img width="400" alt="Screenshot 2019-03-21 21 59 10" src="https://user-images.githubusercontent.com/32538678/54786830-300ce680-4c2a-11e9-86e6-319c1c49250f.png">
+<img width="400" alt="Screenshot 2019-03-21 22 00 59" src="https://user-images.githubusercontent.com/32538678/54786832-30a57d00-4c2a-11e9-8020-e1edc2b8c59d.png"><img width="400" alt="Screenshot 2019-03-21 21 59 10" src="https://user-images.githubusercontent.com/32538678/54786830-300ce680-4c2a-11e9-86e6-319c1c49250f.png">
 
 #### Lazy loading
 Another way to make it work even faster is to add lazy loading in my page. By adding this function it only takes 1.34 seconds to load the page with the chosen genre.
@@ -35,8 +35,7 @@ Also I have addede a `cache-control` with a max age so the browser can cache cli
 
 By doing that the loading time with disable cache took 8.2 seconds to load. Without disable cache it took 2.05 seconds to load.
 
-<img width="400" alt="Screenshot 2019-03-28 22 51 00" src="https://user-images.githubusercontent.com/32538678/55195319-77582180-51ac-11e9-8fe1-3e58c294746d.png">
-<img width="400" alt="Screenshot 2019-03-28 22 50 36" src="https://user-images.githubusercontent.com/32538678/55195325-7a531200-51ac-11e9-979c-30e8a4213562.png">
+<img width="400" alt="Screenshot 2019-03-28 22 51 00" src="https://user-images.githubusercontent.com/32538678/55195319-77582180-51ac-11e9-8fe1-3e58c294746d.png"><img width="400" alt="Screenshot 2019-03-28 22 50 36" src="https://user-images.githubusercontent.com/32538678/55195325-7a531200-51ac-11e9-979c-30e8a4213562.png">
 
 ### Service workers
 The last thing that is added in the application is a service worker. The service worker create stores of responses request.
@@ -47,8 +46,8 @@ This makes it possible to visit pages offline that were previously visited and s
 
 The [Service worker](https://github.com/Karinliu/performance-matters-1819/blob/master/src/js/service-workers.js) from my application are using the following caching strategies:
 
-• Precaching -> for offline ejs files, images, css and javascript.
-• Runtime caching -> Network first.
+• Precaching -> for offline ejs files, images, css and javascript. <br>
+• Runtime caching -> Network first. <br>
 
 ## Download and install
 First you have to download or clone this document with the following command:
@@ -66,7 +65,7 @@ After you have cloned this project, you have to `npm install` all the documents.
 To run this project you can use one of the following commands:
 
 • `npm run dev` <br>
-• `node app.js`
+• `node app.js`<br>
 
 
 ## Scripts
