@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+// const fetch = require('node-fetch');
 // const shrinkRay = require('shrink-ray');
 const fs = require('fs')
 const app = express()
@@ -9,16 +10,18 @@ const app = express()
     .use(setHeader)
     .use(express.static('./src/css'))
     .use(express.static('./src/images'))
+    .use(express.static('./src/js'))
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({extended: true}))
     .get('/', index)
+    .get('/offline', offline)
     .get('/:id', detail)
-    .post("/", index)
+    // .post('/', index)
  
 const port = 3000
 
 function setHeader(req, res, next){
-    res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60); 
+    res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60 + ', public'); 
     next();
 }
 
@@ -35,7 +38,9 @@ function setHeader(req, res, next){
 //     };
 
 function index(req, res) {
-    fs.readFile('./src/results.json', function(error, data) {
+    // fetch('https://raw.githubusercontent.com/Karinliu/performance-matters-1819/master/src/results.json')
+    //     .then(res => res.json())
+        fs.readFile('./src/results.json', function(error, data) {
         if (error) throw error;
         const jsonData = JSON.parse(data.toString());
         const filteredData = jsonData.data.filter(genreBooks)
@@ -45,7 +50,9 @@ function index(req, res) {
 
 
         const result = []
-        Object.keys(req.body).forEach(genre=>{
+
+
+        Object.keys(req.query).forEach(genre=>{
             console.log(genre)
             filteredData.forEach(book=>{
                 console.log(book.genre)
@@ -68,6 +75,10 @@ function genreBooks(book) {
 
 function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
+}
+
+function offline(req, res) {
+        res.render('pages/offline.ejs');
 }
 
 function detail(req, res) {

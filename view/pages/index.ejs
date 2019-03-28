@@ -1,16 +1,13 @@
 <% include ../partials/head.ejs %>
 
-<header>
-	<% include ../partials/header.ejs %>
-</header>
+<% include ../partials/header.ejs %>
 
-<body>
 <main id="main"> 
 	<section id="overview">
 	<h1>Kies je genre!</h1>
-	<form method="post" action="/">
+	<form method="get" action="/">
 		<% if (genre) { genre.forEach(function(book) { %>
-  		<input type="checkbox" id="<%=book%>" name=<%=book%> value="<%=book%>">
+  		<input type="checkbox" id="<%=book%>" name="<%=book%>" value="<%=book%>">
   		<label class="genre" for="<%=book%>"><%=book%></label>
   	<% })} %>
   	<button type="submit">Filter</button>
@@ -21,13 +18,12 @@
 	<% if (genresBooks) { genresBooks.forEach(function(book) { %>
 	    <article class="book <%= book.genre %>">
             <a href="<%= book.isbn %>">
-                <img class="img" src="<%= book.cover_image %>" alt="img" />
+                <img class="img lazy" data-src="<%= book.cover_image %>" alt="img" />
                 <p class="summary"><%= book.description %></p>
             </a>
         </article>
     <% })} %>
 	</section>
 	</main>
-</body>
 
 <% include ../partials/footer.ejs %>

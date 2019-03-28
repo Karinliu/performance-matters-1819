@@ -1,1 +1,17 @@
+<script><% include ../../src/js/index.min.js %></script>
 
+<script>
+if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('../service-workers.js')
+                .then(function (registration) {
+                console.log("log log")
+                    return registration.update();
+                }).catch(function (error) {
+                });
+        });
+    }
+</script>
+</body>
+
+</html>
