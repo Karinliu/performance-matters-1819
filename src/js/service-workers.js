@@ -60,6 +60,23 @@ self.addEventListener('fetch', function(event) {
                     cache.put(event.request.url, resClone);
                 })
             return res;
-        }).catch(err => caches.match(event.request).then(res => res))
+        })
+        // .catch(err => caches.match(event.request).then(res => res))
+        .catch(err => {
+            return caches.match(event.request.url).then(res => {
+                console.log(res)
+                if (res) {
+                    return res
+                } else {
+                    return caches.open(CACHE_NAME).then(cache => {
+                        // console.log(cache)
+                        return cache.match('/offline').then(response => {
+                            return response
+                        })
+                    })
+                }
+            })
+
+        })
     )
 });
