@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cmda-minor-web/performance-matters-1819#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "node-fetch": "^2.3.0",
     "nodemon": "^1.18.10",
