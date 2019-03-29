@@ -18,7 +18,7 @@ const app = express()
     .get('/:id', detail)
     // .post('/', index)
  
-const port = 3000
+// const port = listen(process.env.PORT || 3000)
 
 function setHeader(req, res, next){
     res.setHeader('Cache-Control', 'max-age=' + 365 * 24 * 60 * 60 + ', public'); 
